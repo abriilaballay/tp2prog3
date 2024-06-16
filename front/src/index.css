@@ -4,13 +4,15 @@
   font-weight: 400;
 
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  color: rgba(0, 0, 0, 0.87);
+  background-color: #fffefe;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  
 }
 
 a {
@@ -24,11 +26,16 @@ a:hover {
 
 body {
   margin: 0;
-  display: flex;
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
+  background-size: cover; /* Ajusta la imagen para cubrir todo el fondo */
+  background-attachment: fixed;
+
+  flex-direction: column;
+  min-height: 100vh;
 }
+
 
 h1 {
   font-size: 3.2em;
@@ -42,8 +49,9 @@ button {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
+  background-color: #fffcfc;
   cursor: pointer;
+
   transition: border-color 0.25s;
 }
 button:hover {
