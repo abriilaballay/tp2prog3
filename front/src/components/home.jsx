@@ -27,7 +27,7 @@ const Home = () => {
                     en Qatar. Liderados por Lionel Messi, los albicelestes lograron su tercera estrella tras vencer a
                     Francia en una final épica.
                     aca podas ver las Estadisctica de cada jugador
-                /p>
+                </p>
                 <a className="button" href="#">Ver Estadisctica de los juegadores </a>
                 </div>
                 <img
