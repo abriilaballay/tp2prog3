@@ -9,8 +9,8 @@ function App() {
     <Router>
       <Routes>
         <Route path="/register" element={<Register />} />
-        <Route path="/login" element={<Login />} /> {/* Agrega una ruta para "/login" si tienes un componente de inicio de sesión */}
-        <Route path="/" element={<Home />} /> {/* Agrega una ruta para "/" con un componente Home, por ejemplo */}
+        <Route path="/login" element={<Login />} /> 
+        <Route path="/" element={<Home />} /> 
         <Route path="/gallery" element={<Gallery />} /> 
       </Routes>
     </Router>

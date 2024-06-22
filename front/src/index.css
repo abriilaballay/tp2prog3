@@ -9,7 +9,6 @@
   color-scheme: light dark;
   color: rgba(0, 0, 0, 0.87);
   background-color: #fffefe;
-
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -33,6 +32,7 @@ body {
   background-size: cover; 
   background-attachment: fixed;
   flex-direction: column;
+  background-color: rgb(188, 197, 171);
 
 }
 

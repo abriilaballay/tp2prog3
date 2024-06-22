@@ -28,10 +28,14 @@
 .player-details {
   display: flex;
   align-items: center;
-  border: 1px solid #ccc;
+  border: 1px solid #000000;
   border-radius: 5px;
   padding: 10px;
   margin-bottom: 10px;
+  background-color:#87cfcf ;
+  height: 300px;
+  width: 600px;
+  
 }
 
 .player-info {

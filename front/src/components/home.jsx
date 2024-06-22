@@ -1,11 +1,12 @@
 import React from "react";
-import "./home.css";
+import "./estilos/home.css";
 import { Link } from "react-router-dom";
 
 const Home = () => {
     return (
         <div className="flex flex-col min-h-[100dvh]">
             <header className="header">
+                <h3> Estadistica Argentina Mundial</h3>
                 <a className="flex items-center justify-center" href="#"></a>
                 <nav className="nav">
                     <Link to="/login" className="nav-link">
@@ -122,7 +123,6 @@ const Home = () => {
                     </div>
                 </section>
             </main>{" "}
-            */
         </div>
     );
 };
