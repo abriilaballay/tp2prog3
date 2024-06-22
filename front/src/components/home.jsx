@@ -24,8 +24,8 @@ const Home = () => {
                                 La selección de Argentina se consagró campeona del mundo en la
                                 Copa Mundial de la FIFA 2022, celebrada en Qatar. Liderados por
                                 Lionel Messi, los albicelestes lograron su tercera estrella tras
-                                vencer a Francia en una final épica. aca podas ver las
-                                Estadisctica de cada jugador
+                                vencer a Francia en una final épica. <br /> 
+                                <strong>Aca podas ver lasEstadisctica de cada jugador</strong>
                             </p>
                             <Link to="/login" className="button">
                                 Iniciar Sesión
