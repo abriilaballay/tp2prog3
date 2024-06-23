@@ -25,7 +25,7 @@ const Home = () => {
                                 Copa Mundial de la FIFA 2022, celebrada en Qatar. Liderados por
                                 Lionel Messi, los albicelestes lograron su tercera estrella tras
                                 vencer a Francia en una final épica. <br /> 
-                                <strong>Aca podas ver lasEstadisctica de cada jugador</strong>
+                                <strong>Acá podrás ver las Estadísticas de cada jugador</strong>
                             </p>
                             <Link to="/login" className="button">
                                 Iniciar Sesión
@@ -60,7 +60,7 @@ const Home = () => {
                                     <div>
                                         <h3 className="feature-title">
                                             22 de noviembre, Fase de grupos - Argentina vs Arabia
-                                            Saudí
+                                            Saudita
                                         </h3>
                                         <p className="feature-description">Marcador: 1-2</p>
                                     </div>

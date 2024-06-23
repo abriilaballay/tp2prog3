@@ -71,7 +71,7 @@ export default function Gallery() {
                 </div>
 
                 <div className="player-details">
-                    <h1>estadisctica</h1>
+                    <h1>Estadísticas</h1>
                 </div> 
             </div>
             <h3 className="player-counter">

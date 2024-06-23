@@ -40,7 +40,7 @@ export  const jugadores = [
     amarillas: 0,
     rojas: 0,
     minutos: 568,
-    descripcion:''
+    descripcion:'Nació el 6 de abril de 1998 en Córdoba, es un futbolista argentino. Juega como defensor y su equipo actual es el Atlético de Madrid de la Primera División de España.​Es internacional con la Selección de fútbol de Argentina desde 2021. Debutó con la selección argentina el 3 de junio de 2021 en el empate 1-1 frente Chile por las eliminatorias rumbo a Catar 2022. Participó como titular y haciendo relevos con Gonzalo Montiel de la Copa América 2021, la cual terminó obteniendo ganando en la final de la misma frente a Brasil.'
 },{
     nombre: "Gonzalo Montiel",
     posicion: "Defensor",
