@@ -2,6 +2,8 @@ import { useState } from "react";
 import { jugadores } from "../jugadores/jugadores";
 import "./estilos/gallery.css";
 import { Link } from "react-router-dom";
+import  MenuAjuestes from "./dropdown"
+
 
 export default function Gallery() {
     let [index, setIndex] = useState(0);
@@ -33,10 +35,12 @@ export default function Gallery() {
                 >
                     Anterior
                 </button>
+                <MenuAjuestes/>
                 <Link className="button" to="/">
                     {" "}
                     home{" "}
                 </Link>
+
                 <button className="button" onClick={handleSiguiente} disabled={!sigue}>
                     Siguiente
                 </button>

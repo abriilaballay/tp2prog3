@@ -2,11 +2,17 @@ const express = require('express')
 const dotenv = require('dotenv')
 const app = express();
 const cors = require('cors');
+const cookieParser = require('cookie-parser');
 
 app.use(express.urlencoded({extends:false}))
 app.use(express.json());
 
-app.use(cors());
+app.use(cors({
+    origin: 'http://localhost:5173', // Reemplazar con la URL de tu frontend
+    credentials: true
+}));
+
+app.use(cookieParser())
 
 dotenv.config({path: './.env'})
 

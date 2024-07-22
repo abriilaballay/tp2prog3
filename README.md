@@ -5,10 +5,7 @@ Pasos
 
             use database tp2pr3; 
 
-            CREATE TABLE usuarios (
-        gmail VARCHAR(255) NOT NULL UNIQUE,
-        nombreUsuario VARCHAR(100) NOT NULL UNIQUE,
-        password VARCHAR(255) NOT NUL);
+            CREATE TABLE usuarios (ID INT AUTO_INCREMENT PRIMARY KEY,gmail VARCHAR(255) NOT NULL UNIQUE,nombreUsuario VARCHAR(100) NOT NULL UNIQUE,password VARCHAR(255) NOT NUL);
 
     2°  ir ala carpeta back 
         abrir el archivo que se llama .env
