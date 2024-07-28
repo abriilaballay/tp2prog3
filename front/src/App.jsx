@@ -10,6 +10,7 @@ import Login from "./components/login";
 import Home from "./components/home";
 import Gallery from "./components/galerry";
 import Detalles from "./components/detallesCuentas";
+import Pruebo from "./components/pruebo";
 
 function App() {
 return (
@@ -21,6 +22,8 @@ return (
         <Route path="/" element={<Home />} />
         <Route path="/gallery" element={<Gallery />} />
         <Route path="/detalles" element={<Detalles />} />
+        <Route path="/pruebo" element={<Pruebo />} />
+
       </Routes>
     </Router>
 
