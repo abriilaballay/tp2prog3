@@ -3,8 +3,6 @@ const bcryptjs = require('bcryptjs')
 const conexion = require('../database/db')
 const {promisify} = require('util')
 
-
-//procedimiento para registrarnos
 exports.register = async (req, res)=>{    
     try {
         const data = req.body
@@ -15,7 +13,6 @@ exports.register = async (req, res)=>{
                 console.log(error);
                 res.status(400).json({ message: 'Error al registrar usuario' });
             } else {
-                // Envía la URL de destino como parte de la respuesta
                 res.status(200).json({ message: 'Usuario registrado exitosamente', });
             }
         })
@@ -23,6 +20,7 @@ exports.register = async (req, res)=>{
         console.log(error)
     }       
 }
+
 exports.login = async (req,res) => {
     try{
         const data = req.body
@@ -94,7 +92,6 @@ exports.deleteUser = (req, res) => {
     });
 };
 
-
 exports.updateUser =  async(req, res) => {
     const userId = req.params.id;
     const data = req.body;
@@ -104,7 +101,6 @@ exports.updateUser =  async(req, res) => {
         nombreUsuario: data.nombreUsuario,
         password: newPassword
     }
-
     conexion.query('UPDATE usuarios SET ? WHERE id = ?', [nuevo,userId], (error, results) => {
         if (error) {
             console.error('Error en la actualización de la base de datos:', error);
