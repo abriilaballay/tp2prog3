@@ -6,7 +6,7 @@ const PrivateRoute = () => {
 
   const userId = GetUserId(); 
 
-  return userId ? <Outlet   /> : <Navigate to="/login" />; // Renderiza los componentes hijos si está autenticado, de lo contrario redirige a /login
+  return userId ? <Outlet   /> : <Navigate to="/" />; // Renderiza los componentes hijos si está autenticado, de lo contrario redirige a /login
 };
 
 export default PrivateRoute;
