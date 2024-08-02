@@ -57,13 +57,16 @@ const Pruebo = () => {
     if (mostrarJugadores) {
       setMostrarJugadores(false);
     }
+    setJugadorSeleccionado(null)
   };
 
   const toggleMostrarJugadores = () => {
     setMostrarJugadores(prevState => !prevState);
     if (mostrarPartido) {
       setMostrarPartido(false);
+      
     }
+    setPartidoSeleccionado(null)
   };
 
   const mostrarEstadisticasJugador = (jugador) => {

@@ -27,9 +27,13 @@ const Login = () => {
         body: JSON.stringify(data),
         credentials: 'include'
       });
-      if (response.ok) {
-        navigate('/gallery');
-      }
+
+    console.log('Response status:', response.status); // Verifica el estado de la respuesta
+    console.log('Response text:', await response.text()); // Verifica el contenido de la respuesta
+    if (response.ok) {
+      console.log('Redirigiendo a /gallery');
+      navigate('/gallery');
+    }
     } catch (error) {
       alert("Error registrando usuario: " + error.message);
     }

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import "./estilos/pruebo.css";
+import "./estilos/gallery.css";
 import { Link } from "react-router-dom";
 import MenuAjuestes from "./dropdown";
 import { BarChart, Bar, CartesianGrid, XAxis, YAxis, Tooltip, Legend } from 'recharts';
@@ -54,6 +54,7 @@ const Pruebo = () => {
 
     const toggleMostrarPartidos = () => {
         setMostrarPartido(prevState => !prevState);
+        setJugadorSeleccionado(null)
         if (mostrarJugadores) {
             setMostrarJugadores(false);
         }
@@ -61,6 +62,7 @@ const Pruebo = () => {
 
     const toggleMostrarJugadores = () => {
         setMostrarJugadores(prevState => !prevState);
+        setPartidoSeleccionado(null)
         if (mostrarPartido) {
             setMostrarPartido(false);
         }
@@ -111,7 +113,7 @@ const Pruebo = () => {
                 </button>
             </header>
 
-            <div className="column_Act">
+            <div className="column_gallery">
                 <div className="column">
                     {mostrarPartido && (
                         partidos.length > 0 ? (

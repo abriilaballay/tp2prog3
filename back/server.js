@@ -8,7 +8,7 @@ app.use(express.urlencoded({extends:false}))
 app.use(express.json());
 
 app.use(cors({
-    origin: 'http://localhost:5173', // Reemplazar con la URL de tu frontend
+    origin: 'http://localhost:5173', 
     credentials: true
 }));
 
