@@ -12,13 +12,11 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
         <Route path="/" element={<Home />} />
         <Route element={<PrivateRoute />}>
           <Route path="/gallery" element={<Gallery />} />
           <Route path="/detalles" element={<Detalles />} />
-          <Route path="/pruebo" element={<Pruebo />} />
         </Route>
         
       </Routes>

@@ -27,12 +27,12 @@ const Login = () => {
         body: JSON.stringify(data),
         credentials: 'include'
       });
-
-    console.log('Response status:', response.status); // Verifica el estado de la respuesta
-    console.log('Response text:', await response.text()); // Verifica el contenido de la respuesta
+        const respuesta = await response.json();     
     if (response.ok) {
-      console.log('Redirigiendo a /gallery');
+
       navigate('/gallery');
+    }else{
+      alert(respuesta.message);
     }
     } catch (error) {
       alert("Error registrando usuario: " + error.message);

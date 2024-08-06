@@ -1,60 +1,65 @@
 const jwt = require('jsonwebtoken')
 const bcryptjs = require('bcryptjs')
 const conexion = require('../database/db')
-const {promisify} = require('util')
 
 exports.register = async (req, res)=>{    
     try {
         const data = req.body
-        let passHash = await bcryptjs.hash(data.password,8)    
-        console.log(passHash) 
-        conexion.query('INSERT INTO usuarios SET ?', {gmail:data.gmail , nombreUsuario:data.nombreUsuario, password:passHash}, (error, results)=>{
-            if (error) {
-                console.log(error);
-                res.status(400).json({ message: 'Error al registrar usuario' });
-            } else {
-                res.status(200).json({ message: 'Usuario registrado exitosamente', });
+        conexion.query('SELECT * FROM USUARIOS WHERE gmail = ?',[data.gmail], async (err, results) => {
+            if (err) throw err;       
+            if (results.length > 0) {
+                return res.status(400).json({ message: 'El correo ya está registrado' });
             }
-        })
+            conexion.query('SELECT * FROM USUARIOS WHERE nombreUsuario = ?'[data.nombreUsuario],async(err,results)=>{
+                if (err) throw err;       
+                if (results.length > 0) {
+                    return res.status(400).json({ message: 'El nombre de usuario ya está en uso' });
+                }
+                let passHash = await bcryptjs.hash(data.password, 8);    
+                conexion.query('INSERT INTO usuarios SET ?', {gmail:data.gmail, nombreUsuario:data.nombreUsuario, password:passHash}, (error, results)=>{
+                    if (error) {
+                        console.log(error);
+                        res.status(400).json({ message: 'Error al registrar usuario' });
+                    } else {
+                        res.status(200).json({ message: 'Usuario registrado exitosamente', });
+                    }
+                })
+            })})
     } catch (error) {
         console.log(error)
     }       
 }
 
 exports.login = async (req,res) => {
-    try{
-        const data = req.body
-        if (data.gmail && data.password) {
-            conexion.query ('select * from usuarios where gmail = ?', [data.gmail], async (error , resultado ) =>{
-                if (error) {
-                    console.error('Error en la consulta a la base de datos:', error);
-                    return res.status(500).send('Error interno del servidor');
-                }
-                if (resultado.length == 0 || !( await bcryptjs.compare(data.password, resultado[0].password))) {
-                console.log('usurio no encontrado ')
-                } else {
-                    console.log('usuario encontrado')
-                    const token = jwt.sign(
-                        { id: resultado[0].ID, user: resultado[0].nombreUsuario,},
-                        process.env.JWT_SECRET,
-                        {expiresIn:process.env.JWT_EXPIRATION});
-                        const cookieOptions = {
-                            expires: new Date(Date.now() + process.env.JWT_COOKIE_EXPIRES * 24 * 60 * 60 * 1000),
-                            secure: process.env.NODE_ENV === 'production'
-                        };
-                        res.cookie("jwt",token,cookieOptions);
-                        return res.status(200).json({ message: 'Inicio de sesión exitoso' });
-                }
-                
-            } )
-        } else {
-            console.log('datos invalidos ')
-        }
-    }    
-    catch (error) {
-        console.log(error)
+    try {
+        const data = req.body;
+        conexion.query('SELECT * FROM usuarios WHERE gmail = ?', [data.gmail], async (error, resultado) => {
+            if (error) {
+                console.error('Error en la consulta a la base de datos:', error);
+                return res.status(500).send('Error interno del servidor');
+            }
+            if (resultado.length == 0 || !(await bcryptjs.compare(data.password, resultado[0].password))) {
+                return res.status(400).json({ message: 'Correo electrónico o contraseña no son válidos' });
+            }
+            const token = jwt.sign(
+                { id: resultado[0].ID, user: resultado[0].nombreUsuario },
+                process.env.JWT_SECRET,
+                { expiresIn: process.env.JWT_EXPIRATION }
+            );
+            const cookieOptions = {
+                expires: new Date(Date.now() + process.env.JWT_COOKIE_EXPIRES * 24 * 60 * 60 * 1000),
+                secure: process.env.NODE_ENV === 'production'
+            };
+            res.cookie("jwt", token, cookieOptions);
+            return res.status(200).json({ message: 'Inicio de sesión exitoso' });
+        });
+
+    } catch (error) {
+        console.error('Error en el servidor:', error);
+        return res.status(500).send('Error interno del servidor');
     }
-}
+};
+
 
 exports.getUsers = (req, res) => {
     conexion.query('SELECT * FROM usuarios', (error, results) => {
