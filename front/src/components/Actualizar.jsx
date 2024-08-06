@@ -35,12 +35,10 @@ const Actualizar = () => {
 
     return (
         <form className="Actualizar-form" onSubmit={handleSubmit(onSubmit)}>
-            <h2 className="h2_titulo"> <strong>Editar informacion de usuario</strong></h2>
-            <h4>Aca podras editar todo tu informacion desde el nombre de ususario hasta la contraseña</h4>
-            <br />
-            <br />
+            <h2 className="tituloPartidos"> <strong>Editar informacion de usuario</strong></h2><br />
+            <h4 className="tituloPartidos">Aca podras editar todo tu informacion desde el nombre de ususario hasta la contraseña</h4>
             <div className="div_actualizar">
-                <label htmlFor=""> Email </label><br />
+                <label htmlFor=""> <strong>Email</strong> </label><br />
                 <input
                     className="actualizarInput"
                     placeholder="Email"
@@ -56,7 +54,7 @@ const Actualizar = () => {
 
 
             <div className="div_actualizar">
-                <label htmlFor=""> Nombre de Usuario </label><br />
+                <label htmlFor=""> <strong>Nombre de Usuario</strong> </label><br />
                 <input
                     className="actualizarInput"
                     type="text"
@@ -72,7 +70,7 @@ const Actualizar = () => {
 
 
             <div className="div_actualizar">
-                <label htmlFor="">  Contraseña</label><br />
+                <label htmlFor=""> <strong>Contraseña</strong></label><br />
                 <input
                     className="actualizarInput"
                     type="password"

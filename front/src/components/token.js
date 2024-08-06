@@ -21,4 +21,3 @@ const GetUserId = () => {
 };
 
 export default GetUserId;
-

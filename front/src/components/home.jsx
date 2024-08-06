@@ -6,26 +6,29 @@ const Home = () => {
     return (
         <div className="flex flex-col min-h-[100dvh]">
             <header className="header">
-                <h3> Estadistica Argentina Mundial</h3>
-                <a className="flex items-center justify-center" href="#"></a>
-                <nav className="nav">
-                    <Link to="/login" className="nav-link">
-                        Iniciar Sesión
-                    </Link>
-                </nav>
+            <div className="HeaderIzquierdo"> 
+        <img src="../../public/ESCUDO.png" alt=" escudo Afa" className="IconosAfa" /><h2>Copa America 2024 Selecion Argentina </h2>
+        </div>      
+                <Link to="/login" className="nav-link">
+                    <button className=" botonIcono">
+                    <img src="../../public/iconoSesion.png" alt=" Iconos jugadores" className="Iconos"/>
+                        Iniciar Sesion    
+                    </button>
+                    
+                    </Link>                 
+                
             </header>
             <main className="flex-1">
 
                 <section>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center p-10">
                         <div className=" flex flex-col space-y-4">
-                            <h1 className="title">Argentina, Campeona del Mundo 2022</h1>
+                            <h1 className="title">Argentina, Campeona de la Copa America 2024</h1>
                             <p className="description">
-                                La selección de Argentina se consagró campeona del mundo en la
-                                Copa Mundial de la FIFA 2022, celebrada en Qatar. Liderados por
-                                Lionel Messi, los albicelestes lograron su tercera estrella tras
-                                vencer a Francia en una final épica. <br /> 
-                                <strong>Acá podrás ver las Estadísticas de cada jugador</strong>
+                                La selección de Argentina se consagró campeona de La copa del America 2024, 
+                                celebrada en Estados Unidos. Liderados por Lionel Messi, 
+                                Los albicelestes lograron su decimosexta Trofeo tras vencer a Colombia en una final épica, consagrándose como el máximo ganador de la Copa América. <br /> 
+                                
                             </p>
                             <Link to="/login" className="button">
                                 Iniciar Sesión
@@ -33,9 +36,9 @@ const Home = () => {
                         </div>
                         <div>
                             <img
-                                src="https://www.lanacion.com.ar/resizer/Vhw_tuyCLnsIlrC01HnFog65Qxk=/1200x800/smart/filters:format(webp):quality(80)/cloudfront-us-east-1.images.arcpublishing.com/lanacionar/OAMAYC4IP5HSPKBA2VCRGUETNE.JPG"
+                                src="https://www.clarin.com/img/2024/07/15/FSYk3cFMv_2000x1500__1.jpg"
                                 alt="Argentina Campeona"
-                                className=""
+                                className="fotoCAmpeona"
                             />
                         </div>
                     </div>
@@ -45,7 +48,7 @@ const Home = () => {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center p-10">
                         <div>
                             <img
-                                src="https://www.tubewp.com/wp-content/uploads/2022/12/messi-world-cup-trophy-wallpapers-5.jpg"
+                                src="https://assets.goal.com/v3/assets/bltcc7a7ffd2fbf71f5/blt04c00767f05f9b8c/615f5bdc07aaed59472ea335/4a923803766b0842cfd5c563bfa04d676679038b.jpg"
                                 alt="Argentina Campeona"
                                 className=""
                             />
@@ -59,16 +62,7 @@ const Home = () => {
                                 <li className="feature">
                                     <div>
                                         <h3 className="feature-title">
-                                            22 de noviembre, Fase de grupos - Argentina vs Arabia
-                                            Saudita
-                                        </h3>
-                                        <p className="feature-description">Marcador: 1-2</p>
-                                    </div>
-                                </li>
-                                <li className="feature">
-                                    <div>
-                                        <h3 className="feature-title">
-                                            25 de noviembre, Fase de grupos - Argentina vs México
+                                            20 de junio, Fase de grupos - Argentina vs Canada                                         
                                         </h3>
                                         <p className="feature-description">Marcador: 2-0</p>
                                     </div>
@@ -76,7 +70,15 @@ const Home = () => {
                                 <li className="feature">
                                     <div>
                                         <h3 className="feature-title">
-                                            29 de noviembre, Fase de grupos - Argentina vs Polonia
+                                            25 de junio, Fase de grupos - Chile vs Argentina
+                                        </h3>
+                                        <p className="feature-description">Marcador: 0-1</p>
+                                    </div>
+                                </li>
+                                <li className="feature">
+                                    <div>
+                                        <h3 className="feature-title">
+                                            29 de Junio, Fase de grupos - Argentina vs Peru
                                         </h3>
                                         <p className="feature-description">Marcador: 2-0</p>
                                     </div>
@@ -84,36 +86,28 @@ const Home = () => {
                                 <li className="feature">
                                     <div>
                                         <h3 className="feature-title">
-                                            3 de diciembre, Octavos - Argentina vs Australia
-                                        </h3>
-                                        <p className="feature-description">Marcador: 2-1</p>
-                                    </div>
-                                </li>
-                                <li className="feature">
-                                    <div>
-                                        <h3 className="feature-title">
-                                            9 de diciembre, Cuartos - Argentina vs Países Bajos
+                                            4 de Julio, Cuartos - Argentina vs Ecuador
                                         </h3>
                                         <p className="feature-description">
-                                            Marcador: 2-2 en penaltis (4-3)
+                                            Marcador: 1-1 en penaltis (4-2)
                                         </p>
                                     </div>
                                 </li>
                                 <li className="feature">
                                     <div>
                                         <h3 className="feature-title">
-                                            13 de diciembre, Semifinales - Argentina vs Croacia
+                                            9 de julio, Semifinales - Argentina vs Canada
                                         </h3>
-                                        <p className="feature-description">Marcador: 3-0</p>
+                                        <p className="feature-description">Marcador: 2-0</p>
                                     </div>
                                 </li>
                                 <li className="feature">
                                     <div>
                                         <h3 className="feature-title">
-                                            18 de diciembre, Final - Argentina vs Francia
+                                            14 de julio, Final - Argentina vs Canada
                                         </h3>
                                         <p className="feature-description">
-                                            Marcador: 3-3. Victoria en penaltis (4-2)
+                                            Marcador: 1-0
                                         </p>
                                     </div>
                                 </li>

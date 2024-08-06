@@ -32,10 +32,11 @@ body {
   background-size: cover; 
   background-attachment: fixed;
   flex-direction: column;
-  background-color: rgb(188, 197, 171);
+  background-color: #f4f4f4;
+  /* background-color: rgb(188, 197, 171); */
+
 
 }
-
 
 h1 {
   font-size: 3.2em;
@@ -49,9 +50,8 @@ button {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #fffcfc;
+  background-color: #1d1d1d;
   cursor: pointer;
-
   transition: border-color 0.25s;
 }
 button:hover {

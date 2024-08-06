@@ -1,272 +1,78 @@
-import { useEffect, useState } from "react";
-import "./estilos/pruebo.css";
-import { Link } from "react-router-dom";
-import MenuAjuestes from "./dropdown";
-import { BarChart, Bar, CartesianGrid, XAxis, YAxis, Tooltip, Legend } from 'recharts';
+import React from 'react';
+import { Radar, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, ResponsiveContainer } from 'recharts';
 
-const Pruebo = () => {
-  const [partidos, setPartidos] = useState([]);
-  const [jugadores, setJugadores] = useState([]);
-  const [jugadorSeleccionado, setJugadorSeleccionado] = useState(null);
-  const [mostrarPartido, setMostrarPartido] = useState(true);
-  const [mostrarJugadores, setMostrarJugadores] = useState(false);
-  const [partidoSeleccionado, setPartidoSeleccionado] = useState(null);
+// Datos de ejemplo para el gráfico de radar
+const radarData = [
+  {
+    metric: 'Goles',
+    valor: 10,
+    fullMark: 20,
+  },
+  {
+    metric: 'Faltas Totales',
+    valor: 30,
+    fullMark: 50,
+  },
+  {
+    metric: 'Pases',
+    valor: 150,
+    fullMark: 200,
+  },
+  {
+    metric: 'Tiros',
+    valor: 80,
+    fullMark: 100,
+  },
+  {
+    metric: 'Posesión (%)',
+    valor: 55,
+    fullMark: 100,
+  }
+];
 
-  useEffect(() => {
-    const fetchPartidos = async () => {
-      const url = `https://v3.football.api-sports.io/fixtures?season=2024&league=9&team=26`;
-      try {
-        const response = await fetch(url, {
-          method: 'GET',
-          headers: {
-            'x-apisports-key': "c7c23ac2199a5e7df2282b84da987986",
-            'x-rapidapi-host': "v3.football.api-sports.io"
-          }
-        });
-        const respuesta = await response.json();
-        setPartidos(respuesta.response);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    };
-    fetchPartidos();
-  }, []);
+// Componente del gráfico de radar
+const RadarChartComponent = () => (
+  <ResponsiveContainer width="100%" height={200}>
+    <RadarChart cx="50%" cy="50%" outerRadius="70%" data={radarData}>
+      <PolarGrid stroke="#000" strokeWidth={1} fill="#fff" />
+      <PolarAngleAxis dataKey="metric" stroke="#000" />
+      <PolarRadiusAxis stroke="#000" />
+      <Radar
+        name="Argentina"
+        dataKey="valor"
+        stroke="#00bfff"  // Celeste
+        fill="#00bfff"   // Celeste
+        fillOpacity={0.6}
+      />
+    </RadarChart>
+  </ResponsiveContainer>
+);
 
-  useEffect(() => {
-    const fetchJugadores = async () => {
-      const url = `https://v3.football.api-sports.io/players?season=2024&league=9&team=26`;
-      try {
-        const response = await fetch(url, {
-          method: 'GET',
-          headers: {
-            'x-apisports-key': "c7c23ac2199a5e7df2282b84da987986",
-            'x-rapidapi-host': "v3.football.api-sports.io"
-          }
-        });
-        const respuesta = await response.json();
-        setJugadores(respuesta.response);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    };
-    fetchJugadores();
-  }, []);
-
-  const toggleMostrarPartidos = () => {
-    setMostrarPartido(prevState => !prevState);
-    if (mostrarJugadores) {
-      setMostrarJugadores(false);
-    }
-    setJugadorSeleccionado(null)
-  };
-
-  const toggleMostrarJugadores = () => {
-    setMostrarJugadores(prevState => !prevState);
-    if (mostrarPartido) {
-      setMostrarPartido(false);
-      
-    }
-    setPartidoSeleccionado(null)
-  };
-
-  const mostrarEstadisticasJugador = (jugador) => {
-    setJugadorSeleccionado(jugador);
-  };
-
-  const mostrarGraficoPartido = (partido) => {
-    setPartidoSeleccionado(partido);
-  };
-
-  const prepareChartData = (jugador) => {
-    if (!jugador || !jugador.statistics.length) return [];
-
-    const stats = jugador.statistics[0]; // Suponiendo que solo tienes un objeto en el array 'statistics'
-    return [
-      { stat: 'Goles', value: stats.goals.total },
-      { stat: 'Asistencias', value: stats.goals.assists },
-      { stat: 'Pases Totales', value: stats.passes.total },
-      { stat: 'Recuperaciones', value: stats.tackles.total },
-      { stat: 'Minutos Jugados', value: stats.games.minutes }
-    ];
-  };
-
-  const preparePartidoChartData = (partido) => {
-    if (!partido) return [];
-
-    return [
-      { team: partido.teams.home.name, goals: partido.goals.home },
-      { team: partido.teams.away.name, goals: partido.goals.away },
-    ];
-  };
-
+// Componente principal
+const ArgentinaInfoWithRadar = () => {
   return (
-    <div className="flex flex-col min-h-[100dvh]">
-      <header className="header">
-        <MenuAjuestes />
-        <Link className="button" to="/">
-          Home
-        </Link>
-        <button className="button" onClick={toggleMostrarPartidos}>
-          {mostrarPartido ? "Ocultar " : "Mostrar"} Partidos
-        </button>
-        <button className="button" onClick={toggleMostrarJugadores}>
-          {mostrarJugadores ? "Ocultar " : "Mostrar "} Jugadores
-        </button>
-      </header>
+    <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+      {/* Información sobre Argentina */}
+      <div style={{ flex: 1, padding: '20px',  }}>
+        <p><strong>Partidos Jugados:</strong> 6</p>
+        <p><strong>Victorias:</strong> 5</p>
+        <p><strong>Empates:</strong> 1</p>
+        <p><strong>Derrotas:</strong> 0</p>
+        <p><strong>Goles a Favor:</strong> 9</p>
+        <p><strong>Goles en Contra:</strong> 1</p>
+        <p><strong>Faltas Totales:</strong> 30</p>
+        <p><strong>Pases Totales:</strong> 150</p>
+        <p><strong>Tiros Totales:</strong> 80</p>
+        <p><strong>Posesión Promedio:</strong> 55%</p>
+      </div>
 
-      <div className="column_Act">
-        <div className="column">
-          {mostrarPartido && (
-            partidos.length > 0 ? (
-              <div>
-                {partidos.map(partido => (
-                  <div key={partido.fixture.id} className="partido">
-                    <div className="team">
-                      <img src={partido.teams.home.logo} alt={`${partido.teams.home.name} logo`} className="team-logo" />
-                      <span className="team-name">{partido.teams.home.name}</span>
-                    </div>
-                    <span className="vs"> {partido.goals.home} vs {partido.goals.away}</span>
-                    <div className="team">
-                      <img src={partido.teams.away.logo} alt={`${partido.teams.away.name} logo`} className="team-logo" />
-                      <span className="team-name">{partido.teams.away.name}</span>
-                    </div>
-                    <button onClick={() => mostrarGraficoPartido(partido)}>
-                      Mostrar Gráfico
-                    </button>
-                  </div>
-                ))}
-              </div>
-            ) : (
-              <p>Cargando partidos...</p>
-            )
-          )}
-
-          {mostrarJugadores && (
-            jugadores.length > 0 ? (
-              <div>
-                <h2>Argentina Copa America Jugadores</h2>
-                <table className="mi-tabla">
-                  <thead>
-                    <tr className="table-dark">
-                      <th scope="col">Nombre</th>
-                      <th scope="col">Acciones</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {jugadores.map(jugador => (
-                      <tr key={jugador.player.id}>
-                        <td>{jugador.player.name}</td>
-                        <td>
-                          <button onClick={() => mostrarEstadisticasJugador(jugador)}>
-                            Estadísticas
-                          </button>
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-            ) : (
-              <p>Cargando jugadores...</p>
-            )
-          )}
-        </div>
-
-        <div className="column">
-          {jugadorSeleccionado && (
-            <div className="jugador-info">
-              <div className="column_Jugador">
-                <div>
-                  <img src={jugadorSeleccionado.player.photo} alt={jugadorSeleccionado.player.name} className="jugador-logo" />
-                </div>
-                <div>
-                  <p><strong>Nombre:</strong> {jugadorSeleccionado.player.firstname}</p>
-                  <p><strong>Apellido:</strong> {jugadorSeleccionado.player.lastname}</p>
-                  <p><strong>Nacionalidad:</strong> {jugadorSeleccionado.player.nationality}</p>
-                  <p><strong>Nacimiento:</strong> {jugadorSeleccionado.player.birth.date} ({jugadorSeleccionado.player.age})</p>
-                  <p><strong>Altura:</strong> {jugadorSeleccionado.player.height}</p>
-                  <p><strong>Peso:</strong> {jugadorSeleccionado.player.weight}</p>
-                </div>
-              </div>
-              <div className="grafico">
-                <h2 style={{ textAlign: 'center', marginBottom: '20px' }}>Gráfico de Estadísticas del Jugador</h2>
-                <BarChart 
-                  width={600} 
-                  height={300} 
-                  data={prepareChartData(jugadorSeleccionado)} 
-                  style={{ backgroundColor: '#f5f5f5', borderRadius: '10px', boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.1)' }}
-                >
-                  <CartesianGrid strokeDasharray="5 5" stroke="#ddd" />
-                  <XAxis 
-                    dataKey="stat" 
-                    tick={{ fill: '#333', fontSize: 12, fontWeight: 500 }} 
-                    axisLine={{ stroke: '#333', strokeWidth: 2 }}
-                  />
-                  <YAxis 
-                    tick={{ fill: '#333', fontSize: 12, fontWeight: 500 }} 
-                    axisLine={{ stroke: '#333', strokeWidth: 2 }}
-                  />
-                  <Tooltip 
-                    contentStyle={{ backgroundColor: '#fff', borderColor: '#ccc', borderRadius: '5px', borderWidth: '1px' }}
-                    labelStyle={{ color: '#333' }}
-                    itemStyle={{ color: '#333' }}
-                  />
-                  <Legend 
-                    wrapperStyle={{ padding: '10px', fontSize: '14px', fontWeight: '500' }}
-                    verticalAlign="top"
-                  />
-                  <Bar 
-                    dataKey="value" 
-                    fill="#8884d8" 
-                    barSize={40} 
-                    radius={[5, 5, 0, 0]} 
-                  />
-                </BarChart>
-              </div>
-            </div>
-          )}
-
-          {partidoSeleccionado && (
-            <div className="grafico">
-              <h2 style={{ textAlign: 'center', marginBottom: '20px' }}>Gráfico de Goles del Partido</h2>
-              <BarChart 
-                width={600} 
-                height={300} 
-                data={preparePartidoChartData(partidoSeleccionado)} 
-                style={{ backgroundColor: '#f5f5f5', borderRadius: '10px', boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.1)' }}
-              >
-                <CartesianGrid strokeDasharray="5 5" stroke="#ddd" />
-                <XAxis 
-                  dataKey="team" 
-                  tick={{ fill: '#333', fontSize: 12, fontWeight: 500 }} 
-                  axisLine={{ stroke: '#333', strokeWidth: 2 }}
-                />
-                <YAxis 
-                  tick={{ fill: '#333', fontSize: 12, fontWeight: 500 }} 
-                  axisLine={{ stroke: '#333', strokeWidth: 2 }}
-                />
-                <Tooltip 
-                  contentStyle={{ backgroundColor: '#fff', borderColor: '#ccc', borderRadius: '5px', borderWidth: '1px' }}
-                  labelStyle={{ color: '#333' }}
-                  itemStyle={{ color: '#333' }}
-                />
-                <Legend 
-                  wrapperStyle={{ padding: '10px', fontSize: '14px', fontWeight: '500' }}
-                  verticalAlign="top"
-                />
-                <Bar 
-                  dataKey="goals" 
-                  fill="#82ca9d" 
-                  barSize={40} 
-                  radius={[5, 5, 0, 0]} 
-                />
-              </BarChart>
-            </div>
-          )}
-        </div>
+      {/* Gráfico de radar */}
+      <div style={{ flex: 1 }}>
+        <h2>Radar del promedio </h2>
+        <RadarChartComponent />
       </div>
     </div>
   );
 };
 
-export default Pruebo;
+export default ArgentinaInfoWithRadar;

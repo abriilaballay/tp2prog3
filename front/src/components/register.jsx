@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import "./estilos/register.css";
+
 import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 
@@ -35,18 +35,10 @@ const Register = () => {
 
   return (
     <>
-      <header className="header">
-        <a className="flex items-center justify-center" href="#"></a>
-        <nav className="nav">
-          <Link to="/" className="nav-link">
-            home
-          </Link>
-        </nav>
-      </header>
+      
 
-      <form onSubmit={handleSubmit(onSubmit)} className="register-form">
-        <h2>Registro</h2>
-
+      <form onSubmit={handleSubmit(onSubmit)} className="login-form">
+        <h2 className="tituloPartidos">Registro</h2><br />
         <div>
           
           <input
@@ -91,8 +83,7 @@ const Register = () => {
           {errors.password?.type === "required" && <p>El campo es requerido</p>}
         </div>
 
-        <button type="submit" className="button">Registrar</button>
-        <p className="register-text">¿Ya Creaste tu cuenta ? Presiona <Link to='/login'>aquí</Link> para inicias secion.</p>
+        <button type="submit" className="login-button">Registrar</button>
       </form>
 
     </>

@@ -40,7 +40,7 @@ exports.login = async (req,res) => {
                         {expiresIn:process.env.JWT_EXPIRATION});
                         const cookieOptions = {
                             expires: new Date(Date.now() + process.env.JWT_COOKIE_EXPIRES * 24 * 60 * 60 * 1000),
-                            secure: process.env.NODE_ENV === 'production' // Debe estar habilitado en producción
+                            secure: process.env.NODE_ENV === 'production'
                         };
                         res.cookie("jwt",token,cookieOptions);
                         return res.status(200).json({ message: 'Inicio de sesión exitoso' });

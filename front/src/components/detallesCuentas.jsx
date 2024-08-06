@@ -42,7 +42,7 @@ const Detalles = () => {
                 method: "DELETE",
                 headers: {
                     "Content-Type": "application/json",
-                    "Authorization": `Bearer ${yourToken}` // Asegúrate de agregar el token si es necesario
+                    "Authorization": `Bearer ${yourToken}`
                 },
             });
 
@@ -60,34 +60,41 @@ const Detalles = () => {
     };
 
     useEffect(() => {
-        MostrarInfomacion(); // Llama a la función cuando el componente se monte
-    }, []); // Dependencias vacías significan que se ejecuta solo una vez al montar
+        MostrarInfomacion(); 
+    }, []); 
 
     if (error) {
-        return <div>Error: {error}</div>; // Mostrar el error si ocurre
+        return <div>Error: {error}</div>; 
     }
 
     if (!usuarios) {
-        return <div>Cargando...</div>; // Mostrar un mensaje mientras se carga la información
+        return <div>Cargando...</div>;
     }
 
     return (
         <div className="flex flex-col min-h-[100dvh]">
             <header className="header">
-                <a className="flex items-center justify-center" href="#"></a>
-                <nav className="nav">
-                    <Link to="/gallery" className="button">home</Link>
-                </nav>
+            <div className="HeaderIzquierdo"> 
+        <img src="../../public/ESCUDO.png" alt=" escudo Afa" className="IconosAfa" /><h2>Copa America 2024 Selecion Argentina </h2>
 
+        </div>
+                    <Link to="/gallery" className="nav-link">
+                    <button className=" botonIcono">
+                    <img src="../../public/flecha.png" alt=" Iconos jugadores" className="Iconos"/>
+                        
+                        Volver</button>
+                    
+                    </Link>
+                
             </header>
             <div className="column_Act">
                 <div className="actualizar_div">
                     <Actualizar />
                 </div>
                 <div className="Informacion">
-                    <h2 className="h2_titulo"><strong>Información de la Cuenta</strong></h2>
-                    <p>Nombre de Usuario: {usuarios.nombreUsuario}</p>
-                    <p>Email: {usuarios.gmail}</p>
+                    <h2 className="tituloPartidos"><strong>Información de la Cuenta</strong></h2><br />
+                    <h4>Nombre de Usuario: <strong>{usuarios.nombreUsuario}</strong></h4>
+                    <h4>Email: <strong>{usuarios.gmail}</strong></h4><br />
                     <button className="boton_eliminar" onClick={eliminar}>Eliminar</button>
                 </div>
             </div>

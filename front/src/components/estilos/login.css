@@ -1,18 +1,17 @@
-.column{
+.columnLogin{
     display: grid; 
-    grid-template-columns: 1fr;
     grid-template-columns: 1fr 1fr;
-    align-items: center; 
-    padding: 20px
+    padding-top: 50px;
+    padding-left: 50px;
+    gap: 0px; 
+    margin:20px; 
 }
+
 .login-form {
-    position: relative;
-    top: 100px;
-    left: 450px;
-    background-color:#87cfcf ;
-    width: 500px;
+    background-color:#ffffff ;
+    width: 600px;
     border-radius: 5px;
-    border: 1px solid #000000;
+    border: 1px solid #000000b4;
     padding: 20px;
     text-align: center;
     margin-right: 10px;
@@ -22,39 +21,30 @@
     width: 100%;
     margin-bottom: 10px;
     padding: 10px;
-    border: 1px solid #ccc;
+    border: 1px solid #00000036;
     border-radius: 5px;
     color: #fff;
+    background-color: aqua;
 }
 .login-button {
     width: 100%;
     padding: 10px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
+    color: #f0ecec;
     border-radius: 5px;
     cursor: pointer;
 }
-.login-button:hover {
-    background-color: #0056b3;
-}
+
 .register-text {
     padding: 0 60px;
     margin-top: 20px;
     font-size: 14px;
 }
-.register-text a {
-    color: #007bff;
-    text-decoration: none;
-}
-.register-text a:hover {
-    text-decoration: underline;
-}
-.footerlogin{
-    background-color: #fff;
-    position: fixed; 
-    bottom: 0;
+
+.register-input {
     width: 100%;
+    margin-bottom: 10px;
     padding: 10px;
-    height: 25px;
+    border: 1px solid #000000b4;
+    border-radius: 5px;
+    background-color: #f4f4f4 ;
 }
