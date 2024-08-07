@@ -9,7 +9,7 @@ const Proximo = () => {
                 const response = await fetch(url, {
                     method: 'GET',
                     headers: {
-                        'x-apisports-key': "b87226b56df4ad200427bcfd6154bf4b",
+                        'x-apisports-key': "c7c23ac2199a5e7df2282b84da987986",
                         'x-rapidapi-host': "v3.football.api-sports.io"
                     }
                 });

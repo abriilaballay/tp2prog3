@@ -138,11 +138,10 @@ const Pruebo = () => {
 
                     {mostrarJugadores && (
                         jugadores.length > 0 ? (
-                            <div>
+                            <div className="ContenedorJugadores">
                                 <h2 className="tituloPartidos">Argentina Copa America Jugadores</h2>
-
                                 {jugadores.map(jugador => (
-                                    <button className="botonPartido" onClick={() => mostrarEstadisticasJugador(jugador)} key={jugador.player.id}>
+                                    <button className="BotonJugadores" onClick={() => mostrarEstadisticasJugador(jugador)} key={jugador.player.id}>
                                         {jugador.player.name}
                                     </button>
                                 ))}
@@ -157,6 +156,7 @@ const Pruebo = () => {
                 <div className="column">
                     {jugadorSeleccionado && (
                         <div className="jugador-info">
+                            <h6  className="tituloPartidos">Informacion del jugador</h6>
                             <div className="column_Jugador">
                                 <div>
                                     <img src={jugadorSeleccionado.player.photo} alt={jugadorSeleccionado.player.name} className="jugador-logo" />
@@ -171,7 +171,7 @@ const Pruebo = () => {
                                 </div>
                             </div>
                             <div className="grafico">
-                                <h2 style={{ textAlign: 'center', marginBottom: '20px' }}>Gráfico de Estadísticas del Jugador</h2>
+                                <h6  className="tituloPartidos">Gráfico de Estadísticas del Jugador</h6>
                                 <BarChart
                                     width={600}
                                     height={300}

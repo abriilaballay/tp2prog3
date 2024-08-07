@@ -14,7 +14,7 @@ const Detalles = () => {
         try {
             const response = await fetch(`http://localhost:8000/users/${userId}`, {
                 method: "GET",
-                credentials: 'include', // Esto asegura que las cookies se envíen con la solicitud
+                credentials: 'include', 
                 headers: {
                     "Content-Type": "application/json",
                 },
