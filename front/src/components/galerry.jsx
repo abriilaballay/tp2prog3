@@ -20,7 +20,7 @@ const Pruebo = () => {
                 const response = await fetch(url, {
                     method: 'GET',
                     headers: {
-                        'x-apisports-key': "c7c23ac2199a5e7df2282b84da987986",
+                        'x-apisports-key': "cb8078c4275aa2c8d8fb7de41555967c",
                         'x-rapidapi-host': "v3.football.api-sports.io"
                     }
                 });
@@ -41,7 +41,7 @@ const Pruebo = () => {
                 const response = await fetch(url, {
                     method: 'GET',
                     headers: {
-                        'x-apisports-key': "c7c23ac2199a5e7df2282b84da987986",
+                        'x-apisports-key': "cb8078c4275aa2c8d8fb7de41555967c",
                         'x-rapidapi-host': "v3.football.api-sports.io"
                     }
                 });
@@ -78,8 +78,7 @@ const Pruebo = () => {
 
     const prepareChartData = (jugador) => {
         if (!jugador || !jugador.statistics.length) return [];
-
-        const stats = jugador.statistics[0]; // Suponiendo que solo tienes un objeto en el array 'statistics'
+        const stats = jugador.statistics[0]; 
         return [
             { stat: 'Goles', value: stats.goals.total },
             { stat: 'Asistencias', value: stats.goals.assists },
@@ -113,7 +112,6 @@ const Pruebo = () => {
 
                     {mostrarPartido && (
                         partidos.length > 0 ? (
-
                             <div className="ContedorPartidos">
                                 <h2 className="tituloPartidos">Argentina Copa America Partidos</h2>
                                 {partidos.map(partido => (
@@ -155,7 +153,9 @@ const Pruebo = () => {
 
                 <div className="column">
                     {jugadorSeleccionado && (
+                        
                         <div className="jugador-info">
+                            {console.log(jugadorSeleccionado)}
                             <h6  className="tituloPartidos">Informacion del jugador</h6>
                             <div className="column_Jugador">
                                 <div>
