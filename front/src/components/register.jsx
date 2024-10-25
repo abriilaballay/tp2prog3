@@ -73,7 +73,7 @@ const Register = () => {
             })}
           />
           {errors.password?.type === "pattern" && (
-            <p>La Contrasña debe tener 1 Mayusculo, 1 minusdcula y mas de 8 caracteres</p>
+            <p>La Contraseña debe tener 1 Mayúscula, 1 minúscula y más de 8 caracteres</p>
           )}
           {errors.password?.type === "required" && <p>El campo es requerido</p>}
         </div>
