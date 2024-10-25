@@ -27,13 +27,13 @@ const Login = () => {
         body: JSON.stringify(data),
         credentials: 'include'
       });
-        const respuesta = await response.json();     
-    if (response.ok) {
-
-      navigate('/gallery');
-    }else{
-      alert(respuesta.message);
-    }
+        const respuesta = await response.json(); 
+        console.log(response)    
+        if (response.ok) {
+          navigate('/gallery');
+      } else {
+          alert(respuesta.message);
+      }
     } catch (error) {
       alert("Error registrando usuario: " + error.message);
     }

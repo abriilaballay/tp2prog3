@@ -24,9 +24,6 @@ const Register = () => {
       });
       const respuesta = await response.json();
       alert(respuesta.message);
-      if (response.ok) {
-        navigate('/login');
-      }
 
     } catch (error) {
       alert("Error registrando usuario: " + error.message);
@@ -35,8 +32,6 @@ const Register = () => {
 
   return (
     <>
-      
-
       <form onSubmit={handleSubmit(onSubmit)} className="login-form">
         <h2 className="tituloPartidos">Registro</h2><br />
         <div>
@@ -50,7 +45,7 @@ const Register = () => {
             })}
           />
           {errors.gmail?.type === "required" && <p>El campo es requerido</p>}
-          {errors.gmail?.type === "pattern" && (
+          {errors.gmaemailil?.type === "pattern" && (
             <p>El formato de email no es correcto</p>
           )}
         </div>

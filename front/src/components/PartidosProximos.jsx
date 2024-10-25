@@ -9,12 +9,12 @@ const Proximo = () => {
                 const response = await fetch(url, {
                     method: 'GET',
                     headers: {
-                        'x-apisports-key': "cb8078c4275aa2c8d8fb7de41555967c",
+                        'x-apisports-key': "3c0692c78c39074a78a1a5d8cbe0d0a3",
                         'x-rapidapi-host': "v3.football.api-sports.io"
                     }
                 });
                 const respuesta = await response.json();
-                console.log(response)
+                console.log(respuesta)
                 setDatos(respuesta.response);
             } catch (error) {
                 console.error("Error fetching data:", error);

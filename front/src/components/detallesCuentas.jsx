@@ -38,11 +38,12 @@ const Detalles = () => {
     };
     const eliminar = async () => {
         try {
-            const response = await fetch(`http://localhost:8000/users/${userId}`, {
+            const response = await fetch(`http://localhost:8000/delete/${userId}`, {
                 method: "DELETE",
+                credentials: 'include',
                 headers: {
                     "Content-Type": "application/json",
-                    "Authorization": `Bearer ${yourToken}`
+                    
                 },
             });
 

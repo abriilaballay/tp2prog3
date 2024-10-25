@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import {
+    Button,
     Dropdown,
     DropdownItem,
     DropdownMenu,
@@ -36,7 +37,8 @@ const MenuAjuestes = () => {
     return (
         <div>
             <Dropdown isOpen={estado} toggle={abrir}>
-                <DropdownToggle caret>Ajustes</DropdownToggle>
+            <DropdownToggle   className="botonAjustes" caret> <img src="../../public/icons-ajustes.png" alt=" escudo Afa" className="IconosAjuste" /></DropdownToggle>
+                
                 <DropdownMenu>
                     <DropdownItem onClick={()=> detallesCuentas()}> Ver detalles de cuentas </DropdownItem>
                     <DropdownItem onClick={() =>cerraSecion()}>Cerrar Sesion </DropdownItem>
