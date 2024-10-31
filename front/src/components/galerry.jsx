@@ -65,7 +65,7 @@ const Pruebo = () => {
             }
         }
     };
-    
+
 
 
     const toggleMostrarPartidos = () => {
@@ -94,7 +94,7 @@ const Pruebo = () => {
     };
 
     const prepareChartData = (jugador) => {
-        
+
         if (!jugador) return [];
 
         return [
@@ -105,7 +105,7 @@ const Pruebo = () => {
             { stat: 'Tarjetas Rojas', value: jugador['Tarjetas Rojas'] },
         ];
     };
-    
+
 
     return (
         <div className="flex flex-col min-h-[100dvh]">
@@ -184,37 +184,39 @@ const Pruebo = () => {
                         </div>
                     )}
 
-{mostrarJugadores && (
-                jugadores.length > 0 ? (
-                    <div className="ContenedorJugadores">
-                        <h2 className="tituloPartidos">Argentina Copa America Jugadores</h2>
-                        {jugadores.map((jugador) => (
-                            <button
-                                className="BotonJugadores"
-                                onClick={() => mostrarEstadisticasJugador(jugador)}
-                                key={jugador.POS} // Usa 'POS' como clave única
-                            >
-                                {jugador.Nombre}
-                            </button>
-                        ))}
-                    </div>
-                ) : (
-                    <p>Cargando jugadores...</p>
-                )
-            )}
+                    {mostrarJugadores && (
+                        jugadores.length > 0 ? (
+                            <div className="ContenedorJugadores">
+                                <h2 className="tituloPartidos">Argentina Copa America Jugadores</h2>
+                                {jugadores.map((jugador) => (
+                                    <button
+                                        className="BotonJugadores"
+                                        onClick={() => mostrarEstadisticasJugador(jugador)}
+                                        key={jugador.POS} // Usa 'POS' como clave única
+                                    >
+                                        {jugador.Nombre}
+                                    </button>
+                                ))}
+                            </div>
+                        ) : (
+                            <p>Cargando jugadores...</p>
+                        )
+                    )}
                 </div>
 
                 <div className="column">
                     {jugadorSeleccionado && (
-                        <div >
+                        <div style={{'backgroundColor': 'white'}}>
                             <h2>Detalles del Jugador</h2>
-                            <div>
+                            <div className="mostrarJugador">
                                 <img src={jugadorSeleccionado.Foto} alt={jugadorSeleccionado.Nombre} className="jugador-logo" />
-                                <p><strong>Nombre:</strong> {jugadorSeleccionado.Nombre}</p>
-                                <p><strong>Nacionalidad:</strong> {jugadorSeleccionado.Nacionalidad}</p>
-                                <p> <strong>Edad:</strong> {jugadorSeleccionado.Edad}</p>
-                                <p><strong>Estatura:</strong> {jugadorSeleccionado.Estatura}</p>
-                                <p><strong>Peso:</strong> {jugadorSeleccionado.Peso}</p>
+                                <div>
+                                    <p><strong>Nombre:</strong> {jugadorSeleccionado.Nombre}</p>
+                                    <p><strong>Nacionalidad:</strong> {jugadorSeleccionado.Nacionalidad}</p>
+                                    <p> <strong>Edad:</strong> {jugadorSeleccionado.Edad}</p>
+                                    <p><strong>Estatura:</strong> {jugadorSeleccionado.Estatura}</p>
+                                    <p><strong>Peso:</strong> {jugadorSeleccionado.Peso}</p>
+                                </div>
                             </div>
                             <div>
                                 <h6>Estadísticas</h6>
@@ -233,17 +235,18 @@ const Pruebo = () => {
                             </div>
                         </div>
                     )}
-                    <div className="graficoPartido">
                         {partidoSeleccionado && (
-                            <div>
-                                <h2 className="tituloPartidos">Estadística Argentina Campeona Copa América 2024</h2>
-                                <ArgentinaInfoWithRadar />
-                            </div>
+                            <>
+                                <div className="graficoPartido">
+                                    <h2 className="tituloPartidos">Estadística Argentina Campeona Copa América 2024</h2>
+                                    <ArgentinaInfoWithRadar />
+                                </div>
+                                {partidoSeleccionado && (<Proximo />)} 
+                            </>
                         )}
-                    </div>
                 </div>
             </div>
-            {partidoSeleccionado && (<Proximo />)}
+            
         </div>
     );
 };
